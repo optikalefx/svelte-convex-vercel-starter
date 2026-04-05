@@ -1,0 +1,25 @@
+{
+  "name": "create-stack",
+  "version": "1.0.0",
+  "description": "CLI to scaffold a SvelteKit + Convex + Vercel project in one command",
+  "type": "module",
+  "bin": {
+    "create-stack": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.9.1",
+    "chalk": "^5.4.1",
+    "dotenv": "^16.4.7",
+    "execa": "^9.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

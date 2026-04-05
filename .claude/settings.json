@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.convex.dev)",
+      "Bash(npx sv@latest create --help)",
+      "Bash(vercel link:*)",
+      "Bash(vercel env:*)",
+      "Bash(gh repo:*)",
+      "Bash(npx convex:*)",
+      "Bash(npm info:*)",
+      "Bash(vercel project:*)",
+      "Read(//Users/sean/.npm/_npx/**)",
+      "Bash(node -e \"const {execaCommand} = require\\('execa'\\); console.log\\('cjs ok'\\)\")",
+      "Read(//Users/sean/htdocs/**)",
+      "Bash(tsx --version)",
+      "Bash(xargs cat:*)",
+      "Bash(vercel deploy:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}
