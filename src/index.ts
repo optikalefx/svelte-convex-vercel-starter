@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { resolve } from 'path';
-import { intro, outro } from '@clack/prompts';
+import { intro, outro, text, isCancel } from '@clack/prompts';
 import { info } from './lib/logger.js';
 import type { StackConfig } from './lib/types.js';
 import { scaffold } from './steps/01-scaffold.js';
@@ -13,11 +13,18 @@ import { deployConvex } from './steps/07-convex-deploy.js';
 import { setVercelEnv } from './steps/08-vercel-env.js';
 import { finalPush } from './steps/09-final-push.js';
 
-const appName = process.argv[2];
+intro('create-svcx — SvelteKit + Convex + Vercel');
+
+let appName = process.argv[2];
 
 if (!appName) {
-  console.error('Usage: create-stack <app-name>');
-  process.exit(1);
+  const answer = await text({
+    message: 'Project name:',
+    placeholder: 'my-app',
+    validate: (v) => (v.trim() ? undefined : 'Project name is required.'),
+  });
+  if (isCancel(answer)) process.exit(0);
+  appName = (answer as string).trim();
 }
 
 const config: StackConfig = {
@@ -29,7 +36,6 @@ const config: StackConfig = {
   convexDeployKey: '',
 };
 
-intro(`Creating ${appName} — SvelteKit + Convex + Vercel`);
 info(`App directory: ${config.appDir}`);
 
 try {
@@ -43,7 +49,7 @@ try {
   await setVercelEnv(config);
   await finalPush(config);
 
-  outro(`Done! Check your Vercel dashboard for the live URL.`);
+  outro('Done!');
 } catch (err) {
   console.error('\nSetup failed:', err instanceof Error ? err.message : err);
   process.exit(1);

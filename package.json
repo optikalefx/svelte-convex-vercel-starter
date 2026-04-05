@@ -1,16 +1,33 @@
 {
-  "name": "create-stack",
+  "name": "create-svcx",
+  "author": "Sean Clark",
+  "repository": "https://github.com/optikalefx/svelte-convex-vercel-starter/",
   "version": "1.0.0",
-  "description": "CLI to scaffold a SvelteKit + Convex + Vercel project in one command",
+  "description": "Create a SvelteKit + Convex + Vercel app in one command",
   "type": "module",
   "bin": {
-    "create-stack": "./dist/index.js"
+    "create-svcx": "./dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
-    "start": "node dist/index.js"
+    "prepublishOnly": "npm run build"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "sveltekit",
+    "convex",
+    "vercel",
+    "scaffold",
+    "starter",
+    "create"
+  ],
+  "license": "MIT",
   "dependencies": {
     "@clack/prompts": "^0.9.1",
     "chalk": "^5.4.1",
