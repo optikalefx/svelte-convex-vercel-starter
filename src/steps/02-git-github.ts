@@ -1,4 +1,4 @@
-import { run } from '../lib/exec.js';
+import { run, runSilent } from '../lib/exec.js';
 import { step, success, info } from '../lib/logger.js';
 import type { StackConfig } from '../lib/types.js';
 
@@ -6,7 +6,7 @@ export async function setupGitHub(config: StackConfig): Promise<void> {
   // Check if a remote is already configured
   let remoteUrl = '';
   try {
-    remoteUrl = await run('git', ['remote', 'get-url', 'origin'], config.appDir);
+    remoteUrl = await runSilent('git', ['remote', 'get-url', 'origin'], config.appDir);
   } catch {
     // no remote yet
   }
@@ -22,7 +22,7 @@ export async function setupGitHub(config: StackConfig): Promise<void> {
   await run('git', ['init'], config.appDir);
 
   // sv create may have already set an SSH remote — remove it so gh can set the correct one
-  try { await run('git', ['remote', 'remove', 'origin'], config.appDir); } catch {}
+  try { await runSilent('git', ['remote', 'remove', 'origin'], config.appDir); } catch {}
 
   await run('git', ['add', '-A'], config.appDir);
 
