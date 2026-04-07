@@ -13,7 +13,7 @@ import { deployConvex } from './steps/07-convex-deploy.js';
 import { setVercelEnv } from './steps/08-vercel-env.js';
 import { finalPush } from './steps/09-final-push.js';
 
-intro('create-svcx — SvelteKit + Convex + Vercel');
+intro('SVCX — SvelteKit + Convex + Vercel');
 
 let appName = process.argv[2];
 

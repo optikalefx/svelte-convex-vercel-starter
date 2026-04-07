@@ -1,9 +1,13 @@
-# create-svcx
+# SVCX
 
-Create a full SvelteKit + Convex + Vercel app in one command.
+I've been using the same stack on every project for a while now. I love using SvelteKit + Convex. I also like to deploy my side projects to vercel. When starting a new project, it's good practice to also deploy a bare-bones app right away.
+
+With that said, this utility scaffolds out Sveltekit + convex + deploy to vercel with GitHub linked for push-to-main deploy in (almost) 1 step.
+
+You still have to paste your convex deploy key, but that's all.
 
 ```bash
-npx create-svcx my-app
+npx svcx-deploy my-app
 ```
 
 ## What it does
@@ -22,19 +26,17 @@ npx create-svcx my-app
 
 All of the following must be installed and authenticated before running:
 
-| Tool | Install | Auth |
-|------|---------|------|
-| Node.js 18+ | [nodejs.org](https://nodejs.org) | — |
-| GitHub CLI | `brew install gh` | `gh auth login` |
-| Vercel CLI | `npm i -g vercel` | `vercel login` |
-| Convex account | — | Prompted during setup |
+| Tool           | Install                          | Auth                  |
+| -------------- | -------------------------------- | --------------------- |
+| Node.js 18+    | [nodejs.org](https://nodejs.org) | —                     |
+| GitHub CLI     | `brew install gh`                | `gh auth login`       |
+| Vercel CLI     | `npm i -g vercel`                | `vercel login`        |
+| Convex account | —                                | Prompted during setup |
 
 ## Usage
 
 ```bash
-npx create-svcx my-app
-# or omit the name to be prompted
-npx create-svcx
+npx svcx-deploy my-app
 ```
 
 ## What's automated vs manual
@@ -45,11 +47,11 @@ Almost everything is automated. The one step that requires manual action:
 
 ## Environment variables set in Vercel
 
-| Variable | Source |
-|----------|--------|
-| `PUBLIC_CONVEX_URL` | Read from `.env.local` after `convex dev` |
-| `PUBLIC_CONVEX_SITE_URL` | Read from `.env.local` after `convex dev` |
-| `CONVEX_DEPLOY_KEY` | Pasted once from Convex dashboard, then cached |
+| Variable                 | Source                                         |
+| ------------------------ | ---------------------------------------------- |
+| `PUBLIC_CONVEX_URL`      | Read from `.env.local` after `convex dev`      |
+| `PUBLIC_CONVEX_SITE_URL` | Read from `.env.local` after `convex dev`      |
+| `CONVEX_DEPLOY_KEY`      | Pasted once from Convex dashboard, then cached |
 
 ## Contributing
 

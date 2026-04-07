@@ -1,12 +1,12 @@
 {
-  "name": "create-svcx",
+  "name": "svcx-deploy",
   "author": "Sean Clark",
   "repository": "https://github.com/optikalefx/svelte-convex-vercel-starter/",
   "version": "1.0.0",
   "description": "Create a SvelteKit + Convex + Vercel app in one command",
   "type": "module",
   "bin": {
-    "create-svcx": "./dist/index.js"
+    "svcx-deploy": "./dist/index.js"
   },
   "files": [
     "dist"
