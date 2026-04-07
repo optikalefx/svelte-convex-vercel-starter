@@ -1,6 +1,6 @@
 import { existsSync, appendFileSync } from 'fs';
 import { join } from 'path';
-import { runInherited } from '../lib/exec.js';
+import { runInherited, run } from '../lib/exec.js';
 import { readEnvFile } from '../lib/env-file.js';
 import { step, success, info, note, text, isCancel } from '../lib/logger.js';
 import type { StackConfig } from '../lib/types.js';

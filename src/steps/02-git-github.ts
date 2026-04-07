@@ -20,8 +20,17 @@ export async function setupGitHub(config: StackConfig): Promise<void> {
   step('Setting up git and GitHub...');
 
   await run('git', ['init'], config.appDir);
+
+  // sv create may have already set an SSH remote — remove it so gh can set the correct one
+  try { await run('git', ['remote', 'remove', 'origin'], config.appDir); } catch {}
+
   await run('git', ['add', '-A'], config.appDir);
-  await run('git', ['commit', '-m', 'Initial SvelteKit scaffold'], config.appDir);
+
+  // sv create may have already made an initial commit — only commit if there's something staged
+  const status = await run('git', ['status', '--porcelain'], config.appDir);
+  if (status.trim()) {
+    await run('git', ['commit', '-m', 'Initial SvelteKit scaffold'], config.appDir);
+  }
 
   // Creates private repo, sets remote, and pushes in one command
   const output = await run('gh', [
