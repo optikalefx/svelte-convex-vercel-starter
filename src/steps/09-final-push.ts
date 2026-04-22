@@ -12,7 +12,7 @@ export async function finalPush(config: StackConfig): Promise<void> {
   if (dirty.trim()) {
     await run('git', ['commit', '-m', 'Add Convex + Vercel integration'], config.appDir);
   }
-  await run('git', ['push'], config.appDir);
+  await run('git', ['push', '--set-upstream', 'origin', 'main'], config.appDir);
   success('Pushed to GitHub.');
 
   // Trigger the first production deployment directly via Vercel CLI.
