@@ -2,6 +2,8 @@
 
 I've been using the same stack on every project for a while now. I love using SvelteKit + Convex. I also like to deploy my side projects to vercel. When starting a new project, it's good practice to also deploy a bare-bones app right away.
 
+https://www.seanclark.dev/projects/svcx-deploy
+
 With that said, this utility scaffolds out Sveltekit + convex + deploy to vercel with GitHub linked for push-to-main deploy in (almost) 1 step.
 
 You still have to paste your convex deploy key, but that's all.

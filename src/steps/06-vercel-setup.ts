@@ -79,9 +79,11 @@ export async function setupVercel(config: StackConfig): Promise<void> {
     rmSync(vercelDir, { recursive: true, force: true });
   }
 
-  const { stdout, stderr } = await runCaptureAll(
-    'vercel', ['link', '--yes', '--project', config.appName], config.appDir,
-  );
+  const args = ['link', '--yes'];
+  if (config.appName !== '.') {
+    args.push('--project', config.appName);
+  }
+  const { stdout, stderr } = await runCaptureAll('vercel', args, config.appDir);
   const combined = stdout + stderr;
   process.stdout.write(combined);
 
